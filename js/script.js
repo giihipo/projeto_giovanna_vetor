@@ -1,10 +1,11 @@
-
-
 let vetor = [];
 
 function adicionarValor() {
   const valor = Number(document.getElementById('valor').value);
-  vetor.push(valor);
+
+  if(!isNaN(valor)) {
+
+    vetor.push(valor);
 
   const tabela = document.getElementById('tabelaValores').getElementsByTagName('tbody')[0];
   const novalinha = tabela.insertRow();
@@ -18,13 +19,13 @@ function adicionarValor() {
 function mostrarPares() {
   const tabela = document.getElementById("tabelaPares").getElementsByTagName("tbody")[0];
 
+  tabelaPares.innerHTML ='';//limpa a tabela antes de adicionar novos Valores
 
-  for (let i = 0; i < vetor.length; i++) {
-    const valor = vetor[i];
-    if (valor % 2 === 0) {
-      const linha = tabela.insertRow();
-      const celula = linha.insertCell();
+    vetor.forEach(valor => {
+    if (valor %2 === 0) {
+        const novalinha = tabelaPares.insertRow();
+        const celula = novaLinha.insertCell(0);
       celula.textContent = valor;
-    }
-  }
+     }
+  });
 }
